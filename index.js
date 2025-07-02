@@ -18,7 +18,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173', 'https://mental-health-deafe.web.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   },
@@ -29,11 +29,12 @@ const onlineUsers = new Set();
 app.use(cookieParser());
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173', 'https://mental-health-deafe.web.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   })
 );
+
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
