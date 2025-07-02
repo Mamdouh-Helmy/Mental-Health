@@ -2,20 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "./index.js",
+      "src": "index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
+      "src": "/socket.io/(.*)",
+      "dest": "/socket.io"
+    },
+    {
       "src": "/(.*)",
       "dest": "/"
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/socket.io/(.*)",
-      "destination": "/api/socket.io"
     }
   ],
   "headers": [
@@ -28,7 +26,7 @@
         },
         {
           "key": "Access-Control-Allow-Methods",
-          "value": "GET,POST,PUT,DELETE"
+          "value": "GET,POST"
         }
       ]
     }

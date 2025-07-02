@@ -19,13 +19,14 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: [
-      'http://localhost:5173',
-      'https://mental-health-deafe.web.app',
-      'https://mental-health-tawny-seven.vercel.app'
+      'https://mental-health-tawny-seven.vercel.app',
+      'http://localhost:5173'
     ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
+    methods: ['GET', 'POST'],
+    credentials: true
   },
+  path: '/socket.io', // ← يجب أن يتطابق مع العميل
+  transports: ['websocket', 'polling'] // ← أضف هذا السطر
 });
 
 const onlineUsers = new Set();
